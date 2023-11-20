@@ -9,7 +9,7 @@ n = 10; // number of leds
 w = 1; // space from led holes to edge
 bw = 1; // bottom wall
 h = b*(3/4)+bw; // plate height
-d = 25; // outer diameter of ring
+d = 23; // outer diameter of ring
 md = 5; // magnet diameter
 mh = 8.2; // magnet height (two)
 mdt = md+t;
@@ -30,4 +30,6 @@ difference() {
         translate([0,0,mdt/2+mdt]) cube([mdt, mht, 1], center=true);
     }
 }
-//translate([0,0,-1]) cylinder(h=1, d1=0, d2=1);
+
+//cylinder(h=0.5, d=d);
+//translate([0,0,0.5]) cylinder(h=1, d1=d, d2=0);

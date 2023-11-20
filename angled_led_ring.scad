@@ -23,15 +23,15 @@ o = 360/n/2;
 echo(cb, ac, rla);
 echo(360/n, o);
 
-//cylinder(h=40, d=40);
+cylinder(h=40, d=40);
 //%translate([0,0,40+3]) cylinder(h=200, d=100);
 
 difference() {
     union() {
         rotate([0,0,90]) motor_holder();
         difference() {
-            translate([0,0,1]) cylinder(h=10, r=rw);
-            translate([0,0,0]) cylinder(h=10+2, r=rw-rd);
+            translate([0,0,1]) cylinder(h=20, r=rw);
+            translate([0,0,0]) cylinder(h=20+2, r=rw-rd);
         }
     }
     for(deg = [o : 360/n : 360+o]) {
@@ -39,13 +39,12 @@ difference() {
         translate([0,rw,0])
         rotate([la,0,0])
         translate([0,0,-5])
-        color("red") led();
+        #color("red") led();
     }
 }
 
-// for(deg = [0 : 360/12 : 360]) {
+//for(deg = [o : 360/n : 360+o]) {
 //    rotate([0,0,deg]) 
-//    translate([0,0,0])
 //    color([1,0.8,0.4,0.5]) light();
 //}
 
@@ -67,7 +66,7 @@ module light() {
 
 module led() {
 //    cylinder(h=c, d=bt);
-    cylinder(h=30, d=bt);
+    cylinder(h=100, d=bt);
 //    translate([0,0,c]) cylinder(h=l-c+20, d=bt);
 }
 
