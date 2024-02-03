@@ -8,7 +8,7 @@ at = a + t;
 n = 10; // number of leds
 w = 1; // space from led holes to edge
 bw = 1; // bottom wall
-h = b*(3/4)+bw; // plate height
+h = 6; // plate height
 d = 23; // outer diameter of ring
 md = 5; // magnet diameter
 mh = 8.2; // magnet height (two)
@@ -17,7 +17,7 @@ mht = mh+t;
 gw = 2; // glue wall
 gww = 1; // glue wall width
 
-echo("d", d)
+echo("d", d, "h", h);
 
 difference() {
     cylinder(h=h, d=d);
