@@ -9,18 +9,23 @@ bw1 = 92; // across by panel
 bw2 = 85; // across after panel 
 bw3 = 138+20; // left to right (to magnet holder)
 bw4 = 74; // across panel
-bwh = 40-3; // box wall height
+bwh = 40-3-27; // box wall height
 
 sd=6+1; // switch hole diameter
 pd=6.8+1; // potentionmeter hole diameter
 
+shi=5; // screw hole inline
+
 //cylinder(d=40, h=mh);
 
 boxb();
+//translate([0,0,bwh+20]) 
+translate([-10,0,6]) rotate([0,180,0]) lid();
+
 //color("red") translate([wt+10,wt+2,wt]) cube([76,20,20]); // battery
 
-module boxbfloor() {
-    bt = 2;
+module boxbfloor(height=2) {
+    bt = height;
     cube([bw4, bw1, bt]);
     translate([bw4,0,0]) cube([bw3-bw4,bw2,bt]);
 }
@@ -29,7 +34,6 @@ module boxb() {
     wt = 2;
     shelfw=20;
     shelfl=30;
-    shi=5; // screw hole inline
     difference() {
         union() {
             boxbfloor();
@@ -49,6 +53,7 @@ module boxb() {
                 translate([bw4+20,shi,0]) support_pillar(support_pillar_height);
                 translate([bw4-shi,bw1-shi,0]) rotate([0,0,180]) support_pillar_corner(support_pillar_height);
             }
+            
 //            difference() {
 //                hull() {
 //                    translate([wt/2,wt/2,0]) cylinder(h=bwh,d=wt);
@@ -67,12 +72,32 @@ module boxb() {
 //            }
 
         }
-        panel_cutouts();
+//        panel_cutouts();
         translate([138,0,5]) usbchole();
     }
     translate([10,35,0]) potmodule();
     translate([45,35,0]) potmodule();
     translate([138-10/2,26+wt,wt]) cube([10,1,3]); // usb holder durt
+}
+
+module lid() {
+    difference() {
+        union() {
+            translate([shi,shi,0]) lid_mount_corner();
+            translate([shi,bw1-shi,0]) rotate([0,0,270]) lid_mount_corner();
+            translate([bw3-shi,bw2-shi,0]) rotate([0,0,180]) lid_mount_corner();
+            translate([bw3-shi,shi,0]) rotate([0,0,90]) lid_mount_corner();
+            translate([bw4+20,shi,0]) lid_mount();
+            translate([bw4-shi,bw1-shi,0]) rotate([0,0,180]) lid_mount_corner();
+            translate([0,0,3]) boxbfloor(3);
+        }
+        translate([shi,shi,-1]) screwhole();
+         translate([shi,bw1-shi,0]) rotate([0,0,270]) screwhole();
+         translate([bw3-shi,bw2-shi,0]) rotate([0,0,180]) screwhole();
+         translate([bw3-shi,shi,0]) rotate([0,0,90]) screwhole();
+         translate([bw4+20,shi,0]) screwhole();
+         translate([bw4-shi,bw1-shi,0]) rotate([0,0,180]) screwhole();
+    }
 }
 
 module panel_cutouts() {
