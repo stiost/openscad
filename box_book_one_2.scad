@@ -9,87 +9,21 @@ bw1 = 92; // across by panel
 bw2 = 85; // across after panel 
 bw3 = 138+20; // left to right (to magnet holder)
 bw4 = 74; // across panel
-bwh = 40-3-27; // box wall height
+bwh = 40-3; // box wall height
 
 sd=6+1; // switch hole diameter
 pd=6.8+1; // potentionmeter hole diameter
 
-
 //cylinder(d=40, h=mh);
 
-//echo(h);
 boxb();
 //color("red") translate([wt+10,wt+2,wt]) cube([76,20,20]); // battery
-//translate([4,4,0]) screwpillar();
-//translate([4,bw1-4,0]) screwpillar();
-//translate([bw3-4,bw2-4,0]) screwpillar();
-//translate([bw3-4,4,0]) screwpillar();
-
-//lidtest();
-//translate([0,0,bwh+0]) lid();
-
-//screwhole();
-
-//module lidtest() {
-//    inline = 5;
-//    
-//    difference() {
-//        cube([50, 50, bwh]);
-//        translate([wt,wt,wt]) cube([50-wt-wt, 50-wt-wt, bwh]);
-//    }
-//
-//    translate([inline,inline,0]) screwpillar();
-//    translate([inline,50-inline,0]) rotate([0,0,-90]) screwpillar();
-//    translate([50-inline,50-inline,0])  rotate([0,0,-180]) screwpillar();
-//    translate([50-inline,inline,0])  rotate([0,0,90]) screwpillar();
-//}
-//
-//module lid() {
-//    inline = 5;
-//    
-//    difference() {
-//        union() {
-//            translate([(wt+0.1), (wt+0.1), 0]) cube([50-(wt+0.1)*2, 50-(wt+0.1)*2, 3]);
-//            translate([0,0,3]) cube([50, 50, 3]);
-//        }
-//        translate([inline,inline,-1]) screwhole();
-//        translate([inline,50-inline,-1]) screwhole();
-//        translate([50-inline,50-inline,-1]) screwhole();
-//        translate([50-inline,inline,-1]) screwhole();
-//    }
-//}
-
-module screwpillar() {
-    hd = 3.0; // m3 screw hole
-    wt = 2;
-    h = bwh-3;
-    d=hd+wt+wt;
-    r=(hd+wt+wt)/2;
-    
-    difference() {
-        union() {
-            cylinder(r=r, h=h);
-            translate([-r,-r,0]) cube([d,r,h]);
-            translate([-r,0,0]) cube([r,r,h]);
-        }
-        translate([0,0,10]) cylinder(d=hd, h=h+2);
-    }
-}
-
-module screwhole() {
-    hd = 3.0; // m3 screw hole
-    head = 5.45;
-    head_h=3;
-    cylinder(d=hd, h=head_h+1);
-    translate([0,0,head_h+1]) cylinder(d=head, h=head_h+1);
-}
 
 module boxbfloor() {
     bt = 2;
     cube([bw4, bw1, bt]);
     translate([bw4,0,0]) cube([bw3-bw4,bw2,bt]);
 }
-
 
 module boxb() {
     wt = 2;
@@ -159,17 +93,3 @@ module potmodule() {
     translate([0,b,0]) cylinder(h, d=hdt);
 //    translate([-2,-2,0])cube([30,30,1]);
 }
-
-
-module usbchole() {
-    usbc=28; // usb c board depth
-    usbc_w=9+1; // usb c plug width
-    usbc_h=3.3+1; // usb c plug height
-    union() {
-        cube([usbc_w-usbc_h,10,usbc_h], center=true);
-        translate([-(usbc_w-usbc_h)/2,0,0]) rotate([90,0,0]) cylinder(h=10, d=usbc_h, center=true);
-        translate([(usbc_w-usbc_h)/2,0,0]) rotate([90,0,0]) cylinder(h=10, d=usbc_h, center=true);
-    }
-}
-
-
