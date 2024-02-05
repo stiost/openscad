@@ -14,7 +14,7 @@ bwh = 40-3-27; // box wall height
 sd=6+1; // switch hole diameter
 pd=6.8+1; // potentionmeter hole diameter
 
-shi=5; // screw hole inline
+shi=3.5+wt; // screw hole inline
 
 //cylinder(d=40, h=mh);
 
@@ -92,11 +92,11 @@ module lid() {
             translate([0,0,3]) boxbfloor(3);
         }
         translate([shi,shi,-1]) screwhole();
-         translate([shi,bw1-shi,0]) rotate([0,0,270]) screwhole();
-         translate([bw3-shi,bw2-shi,0]) rotate([0,0,180]) screwhole();
-         translate([bw3-shi,shi,0]) rotate([0,0,90]) screwhole();
-         translate([bw4+20,shi,0]) screwhole();
-         translate([bw4-shi,bw1-shi,0]) rotate([0,0,180]) screwhole();
+        translate([shi,bw1-shi,0]) rotate([0,0,270]) screwhole();
+        translate([bw3-shi,bw2-shi,0]) rotate([0,0,180]) screwhole();
+        translate([bw3-shi,shi,0]) rotate([0,0,90]) screwhole();
+        translate([bw4+20,shi,0]) screwhole();
+        translate([bw4-shi,bw1-shi,0]) rotate([0,0,180]) screwhole();
     }
 }
 
