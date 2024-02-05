@@ -32,8 +32,8 @@ module lid_mount_corner() {
             translate([-r,0,0]) cube([r,r+p,height]);
         }
         translate([0,0,-10]) cylinder(d=hd, h=height+20);
-        translate([-r-p,-r-r-p-eps,-1]) cube([d+p*2,r+p,height+2]);
-        translate([-r-r-p-eps,-p,-1]) cube([r+p,r+p+p,height+2]);
+        translate([-r-p,-r-r-p-eps+0.1,-1]) cube([d+p*2,r+p,height+2]);
+        translate([-r-r-p-eps+0.1,-p,-1]) cube([r+p,r+p+p,height+2]);
     }
 }
 
@@ -51,7 +51,7 @@ module lid_mount() {
             translate([-r-p/2,-r,0]) cube([d+p,r,height]);
         }
         translate([0,0,-r]) cylinder(d=hd, h=height+20);
-        translate([-r-p/2,-r-r-eps,-1]) cube([d+p,r,height+2]);
+        translate([-r-p/2,-r-r-eps+0.1,-1]) cube([d+p,r,height+2]);
     }
 }
 
