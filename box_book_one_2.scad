@@ -77,7 +77,7 @@ module boxb() {
     }
     translate([10,35,0]) potmodule();
     translate([45,35,0]) potmodule();
-    translate([138-10/2,26+wt,wt]) cube([10,1,3]); // usb holder durt
+    translate([138-10/2,26.5+wt,wt]) cube([10,1,3]); // usb holder durt
 }
 
 module lid() {
