@@ -9,7 +9,7 @@ bw1 = 92; // across by panel
 bw2 = 85; // across after panel 
 bw3 = 138+20; // left to right (to magnet holder)
 bw4 = 74; // across panel
-bwh = 40-3-27; // box wall height
+bwh = 40-3; // box wall height
 
 sd=6+1; // switch hole diameter
 pd=6.8+1; // potentionmeter hole diameter
@@ -20,7 +20,7 @@ shi=3.5+wt; // screw hole inline
 
 boxb();
 //translate([0,0,bwh+20]) 
-translate([-10,0,6]) rotate([0,180,0]) lid();
+//translate([-10,0,6]) rotate([0,180,0]) lid();
 
 //color("red") translate([wt+10,wt+2,wt]) cube([76,20,20]); // battery
 
@@ -53,26 +53,8 @@ module boxb() {
                 translate([bw4+20,shi,0]) support_pillar(support_pillar_height);
                 translate([bw4-shi,bw1-shi,0]) rotate([0,0,180]) support_pillar_corner(support_pillar_height);
             }
-            
-//            difference() {
-//                hull() {
-//                    translate([wt/2,wt/2,0]) cylinder(h=bwh,d=wt);
-//                    translate([wt/2,bw1-wt/2,0]) cylinder(h=bwh,d=wt);
-//                    translate([bw3-wt/2,wt/2,0]) cylinder(h=bwh,d=wt);
-//                    translate([bw4-wt/2,bw1-wt/2,0]) cylinder(h=bwh,d=wt);
-//                    translate([bw4-wt/2,bw1-wt/2,0]) cylinder(h=bwh,d=wt);
-//                    translate([bw4-wt/2,bw2-wt/2,0]) cylinder(h=bwh,d=wt);
-//                    translate([bw3-wt/2,bw2-wt/2,0]) cylinder(h=bwh,d=wt);
-//                }
-//                hull() {
-//                    translate([wt/2+wt,wt/2+wt,0]) cylinder(h=bwh+2,d=wt);
-//                    translate([wt/2+wt,bw1-wt/2-wt,0]) cylinder(h=bwh+2,d=wt);
-//                    translate([bw3-wt/2-wt,wt/2+wt,0]) cylinder(h=bwh+2,d=wt);
-//                }
-//            }
-
         }
-//        panel_cutouts();
+        panel_cutouts();
         translate([138,0,5]) usbchole();
     }
     translate([10,35,0]) potmodule();
@@ -116,5 +98,4 @@ module potmodule() {
     translate([a,0,0]) cylinder(h, d=hdt);
     translate([a,b,0]) cylinder(h, d=hdt);
     translate([0,b,0]) cylinder(h, d=hdt);
-//    translate([-2,-2,0])cube([30,30,1]);
 }
