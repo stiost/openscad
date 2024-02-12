@@ -47,9 +47,8 @@ pd=6.8+1; // potentionmeter hole diameter
 //cylinder(d=40, h=mh);
 
 echo(h);
-//boxb();
-//top();
-cage();
+top();
+//cage();
 //translate([0,0,45]) top();
 
 module cage() {
@@ -82,26 +81,4 @@ module top() {
         translate([0,0,wt-eps]) cylinder(wt+wt, d=d-wt-wt);
         translate([0,0,-1])cylinder(h=5, d=7);
     }
-}
-
-module boxb() {
-    difference() {
-        union() {
-            cube([bw4, bw1, wt]);
-            translate([bw4,0,0]) cube([bw3-bw4,bw2,wt]);
-            cube([bw3,wt,bwh]); // bottom wall
-            cube([wt,bw1,bwh]); // left wall 
-            translate([bw3-wt,0,0]) cube([wt,bw2,bwh]); // left wall 
-            translate([0,bw1-wt,0]) cube([bw4,wt,bwh]); // panel
-            translate([bw4,bw2-wt,0]) cube([bw3-bw4,wt,bwh]); // top wall
-            translate([bw4-wt,bw2-wt,0]) cube([wt,bw1-bw2,bwh]);
-        }
-        panel_cutouts();
-    }
-}
-
-module panel_cutouts() {
-    translate([40,bw1,bwh/2+10]) rotate([90,0,0]) cylinder(wt+2, d=pd+1, center=true);
-    translate([40,bw1,bwh/2-10]) rotate([90,0,0]) cylinder(wt+2, d=pd+1, center=true);
-    translate([20,bw1,bwh/2]) rotate([90,0,0]) cylinder(wt+2, d=sd+1, center=true);
 }

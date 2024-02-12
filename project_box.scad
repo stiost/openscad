@@ -7,7 +7,7 @@ eps=1/128;
 //lid_mount_corner();
 //translate([15,0,0]) support_pillar_corner(3);
 
-screwhole();
+//screwhole();
 
 module screwhole() {
     hd = 3.0; // m3 screw hole
