@@ -18,9 +18,9 @@ shi=3.5+wt; // screw hole inline
 
 //cylinder(d=40, h=mh);
 
-boxb();
-//translate([0,0,bwh+20]) 
-//translate([-10,0,6]) rotate([0,180,0]) lid();
+//boxb();
+//translate([0,0,bwh+20]) lid();
+translate([-10,0,6]) rotate([0,180,0]) lid();
 
 //color("red") translate([wt+10,wt+2,wt]) cube([76,20,20]); // battery
 
@@ -79,6 +79,8 @@ module lid() {
         translate([bw3-shi,shi,0]) rotate([0,0,90]) screwhole();
         translate([bw4+20,shi,0]) screwhole();
         translate([bw4-shi,bw1-shi,0]) rotate([0,0,180]) screwhole();
+        i=12;
+        translate([bw4,i,3-1]) cube([bw3-bw4-i*2,bw2-i*2,3+2]);
     }
 }
 
