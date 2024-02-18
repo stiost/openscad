@@ -86,8 +86,8 @@ module lid() {
 
 module panel_cutouts() {
     translate([40,bw1,bwh/2+10]) rotate([90,0,0]) cylinder(wt*5, d=pd, center=true);
-    translate([40,bw1,bwh/2-10]) rotate([90,0,0]) cylinder(wt*5, d=pd, center=true);
-    translate([20,bw1,bwh/2]) rotate([90,0,0]) cylinder(wt*5, d=sd, center=true);
+    translate([40,bw1,bwh/2-10+2]) rotate([90,0,0]) cylinder(wt*5, d=pd, center=true);
+    translate([20,bw1,bwh/2+1]) rotate([90,0,0]) cylinder(wt*5, d=sd, center=true);
 }
 
 module potmodule() {
