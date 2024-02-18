@@ -14,11 +14,11 @@ h = mh + htt; // height of outer walls
 d = 48; // diameter of outer ring of holder
 owt = 2; // outer wall thickness
 
-walls(h, d, owt, 1);
-translate([0,0,h+3]) ledspacer(1, d, owt);
-translate([0,0,h+10]) rotate([180,0,0]) lid(3, d, owt, 1);
+//walls(h-6, d, owt, 1);
+//translate([0,0,h+3-6]) ledspacer(1+6, d, owt);
+translate([0,0,h+10+3]) rotate([180,0,0]) lid(3+3, d, owt, 1);
 
-//lid(3, d, owt, 1);
+//lid(3+3, d, owt, 1);
 
 module walls(height, inner_diameter, wall_thickness, floor_thickness) {
     hr = motor_width/2+1+0.4+0.5;
@@ -42,9 +42,12 @@ module walls(height, inner_diameter, wall_thickness, floor_thickness) {
             }
 
         }
-//        translate([hr,0,wall_thickness+(holder_height+1)/2]) cube([wall_thickness+2,5,holder_height+1],center=true);
-        translate([20,0,(holder_height+2)/2+floor_thickness-eps]) cube([20, 5, holder_height+2], center=true);
+        translate([20,0,(holder_height+0.1)/2+floor_thickness-eps]) cube([20, 5, holder_height+0.1], center=true);
         translate([0,0,-10]) cylinder(h=20, r=motor_back_hole_width/2);
+    }
+    translate([0,0,(holder_height+0.1)/2+floor_thickness-1]) difference() {
+        cylinder(2, d=inner_diameter+wall_thickness*2);
+        translate([0,0,-1])cylinder(2+2, d=inner_diameter);
     }
 
 }
@@ -73,23 +76,35 @@ module floor(height, inner_diameter, wall_thickness) {
 
 module ledspacer(height, inner_diameter, wall_thickness) {
     pd=7; // screw pillar diameter
-    ph=height;
     lhd = 7; // hole instead of heatsink
-
+    sp = 3; // screw space
+    co=inner_diameter+wall_thickness*2;
+    cow=inner_diameter-10;
+    
     difference() {
         union() {
             floor(height, inner_diameter, wall_thickness);
         }
-        translate([0,0,-1]) cylinder(h=wall_thickness+2, d=lhd);
+        translate([0,0,-1]) cylinder(h=height+2, d=lhd);
+        translate([0,0,-1]) cylinder(h=height, d=inner_diameter);
+        difference() {
+            translate([0,0,height-sp+eps]) cylinder(h=sp,d=inner_diameter+wall_thickness*2+pd*2);
+            translate([0,0,height-sp+eps]) cylinder(h=sp,d=inner_diameter+wall_thickness*2);
+        }
+        translate([-co/2,-cow/2+cow,height-3-0.1]) cube([inner_diameter+wall_thickness*2,cow,3+2]);
+        rotate([0,0,180]) translate([-co/2,-cow/2+cow,height-3-0.1]) cube([inner_diameter+wall_thickness*2,cow,3+2]);
     }
 }
 
 module lid(height, inner_diameter, wall_thickness, floor_thickness) {
     lhd = 7; // led hole diameter
+    co=inner_diameter+wall_thickness*2;
+    cow=inner_diameter-10-0.1;
     difference() {
         base(height, inner_diameter, wall_thickness, floor_thickness);
         translate([0,0,-1]) cylinder(h=wall_thickness+2, d=lhd);
         translate([inner_diameter/2,0,(height/2)+floor_thickness+eps]) cube([20, 5, height], center=true);
+        translate([-co/2,-cow/2,3]) cube([co,cow,3+2]);
     }
     
 }
