@@ -18,9 +18,9 @@ shi=3.5+wt; // screw hole inline
 
 //cylinder(d=40, h=mh);
 
-//boxb();
+boxb();
 //translate([0,0,bwh+20]) lid();
-translate([-10,0,6]) rotate([0,180,0]) lid();
+//translate([-10,0,6]) rotate([0,180,0]) lid();
 
 //color("red") translate([wt+10,wt+2,wt]) cube([76,20,20]); // battery
 
@@ -55,11 +55,11 @@ module boxb() {
             }
         }
         panel_cutouts();
-        translate([138,0,5]) usbchole();
+        translate([138,0,6]) usbchole();
     }
     translate([10,35,0]) potmodule();
     translate([45,35,0]) potmodule();
-    translate([138-10/2,26.5+wt,wt]) cube([10,1,3]); // usb holder durt
+    translate([138-10/2,26.5+wt,wt]) cube([10,1,4]); // usb holder durt
 }
 
 module lid() {
