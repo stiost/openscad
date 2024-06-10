@@ -7,10 +7,17 @@ wh=25;
 
 //translate([0,0,15]) cylinder(h=h,d=d);
 
-rotate_extrude() {
-    translate([0,-5,0]) square([45,15]);
-    translate([45,0,0]) bend2(50,10,0);
-    translate([25-10+45,25,0]) square([10,wh]);
+//cylinder(h=h, d=d);
+
+
+//%rotate_extrude() {
+    shape(wh);
+//}
+
+module shape(wh) {
+    square([45,15]);
+    translate([45,6,0]) bend2(50,10,0);
+    translate([25-10+45,30,0]) square([10,wh]);
 }
 
 module bend2(a,w,t) {

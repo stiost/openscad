@@ -10,9 +10,9 @@ wh=25;
 part_b();
 
 module part_b() {    
-//    rotate_extrude(angle=180) {
+    rotate_extrude(angle=180) {
         part_b_shape();
-//    }
+    }
 }
 
 //shape2();
@@ -26,17 +26,25 @@ module part_a() {
 }
 
 module part_b_shape() {
-    t=0.1;
+    t=0.05;
     d=60+t;
     w=10;
     h=35;
     a=d+w;
     b=a+w;
     r=15+w+w;
-    polygon(points=[
-        [a,0],[b,0],[b,h],[a,h],[a,w],[a+5,w-5]
-    ]);
-    translate([b-r,h]) arc(r-w,[0,90],w);
+    difference() {
+        union() {
+            polygon(points=[
+                [a,0],[b,0],[b,h],[a,h],[a,w],[a+5,w-5]
+            ]);
+            translate([b-r,h]) arc(r-w,[0,90],w);
+            polygon(points=[
+                [b,h],[b,h+r],[a-r+w,h+r],[a-5,h+cos(45)*r-5]
+            ]);
+        }
+        translate([a-r+w-1,h+r-w/2]) square([r+2,r]);
+    }
 //    #polygon(points=[
 //        [a-r+w,h+r-w],[a-r+w,h+r+w],[a-r+w+w,h+r+w],[b-r+sin(45)*r,h+cos(45)*r]
 //    ]);
