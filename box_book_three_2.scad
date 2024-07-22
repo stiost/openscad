@@ -51,8 +51,7 @@ module boxb() {
                 translate([bw3-shi,bw2-shi,0]) rotate([0,0,180]) support_pillar_corner(support_pillar_height);
                 translate([bw3-shi,shi,0]) rotate([0,0,90]) support_pillar_corner(support_pillar_height);
                 translate([bw4+20,shi,0]) support_pillar(support_pillar_height);
-//                translate([bw4-shi,bw1-shi,0]) rotate([0,0,180]) support_pillar_corner(support_pillar_height);
-                translate([bw4-shi,bw1-shi,0]) rotate([0,0,180]) support_pillar(support_pillar_height);
+                translate([bw4+10,bw1-shi,0]) rotate([0,0,180]) support_pillar(support_pillar_height);
             }
         }
         panel_cutouts();
@@ -71,7 +70,7 @@ module lid() {
             translate([bw3-shi,bw2-shi,0]) rotate([0,0,180]) lid_mount_corner();
             translate([bw3-shi,shi,0]) rotate([0,0,90]) lid_mount_corner();
             translate([bw4+20,shi,0]) lid_mount();
-            translate([bw4-shi,bw1-shi,0]) rotate([0,0,180]) lid_mount_corner();
+            translate([bw4+10,bw1-shi,0]) rotate([0,0,180]) lid_mount();
             translate([0,0,3]) boxbfloor(3);
         }
         translate([shi,shi,-1]) screwhole();
@@ -79,16 +78,16 @@ module lid() {
         translate([bw3-shi,bw2-shi,0]) rotate([0,0,180]) screwhole();
         translate([bw3-shi,shi,0]) rotate([0,0,90]) screwhole();
         translate([bw4+20,shi,0]) screwhole();
-        translate([bw4-shi,bw1-shi,0]) rotate([0,0,180]) screwhole();
+        translate([bw4+10,bw1-shi,0]) rotate([0,0,180]) screwhole();
         i=12;
         translate([bw4,i,3-1]) cube([bw3-bw4-i*2,bw2-i*2,3+2]);
     }
 }
 
 module panel_cutouts() {
-    translate([40,bw1,bwh/2+10]) rotate([90,0,0]) cylinder(wt*5, d=pd, center=true);
-    translate([40,bw1,bwh/2-10+2]) rotate([90,0,0]) cylinder(wt*5, d=pd, center=true);
-    translate([20,bw1,bwh/2+1]) rotate([90,0,0]) cylinder(wt*5, d=sd, center=true);
+    translate([40+5,bw1,bwh/2+10]) rotate([90,0,0]) cylinder(wt*5, d=pd, center=true);
+    translate([40+5,bw1,bwh/2-10+2]) rotate([90,0,0]) cylinder(wt*5, d=pd, center=true);
+    translate([20+5,bw1,bwh/2+1]) rotate([90,0,0]) cylinder(wt*5, d=sd, center=true);
 }
 
 module potmodule() {
