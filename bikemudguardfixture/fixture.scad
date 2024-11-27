@@ -6,7 +6,8 @@ b=15; // main cylinder width
 c=5; // hdim
 d=a-5; // mount hole
 e=9; // screw head diameter
-f=3.5-1; // screw head thickness
+f=3.5-1-1; // screw head thickness
+g=4.6; // insert slot
 
 difference() {
     cylinder(h=a,d=b);
@@ -16,9 +17,10 @@ difference() {
     translate([0,(b+2)/2,a-e/2-2]) rotate([90,0,0]) 
     union() {
         cylinder(h=b+2, d=c);
-        translate([0,0])cylinder(h=f+1, d=e);
+        translate([0,0]) cylinder(h=f+1, d=e);
         translate([0,0,b-f+1]) cylinder(h=f+1, d=e);
-    }    
+    }
+    
+    translate([-(b+2)/2,-g/2,a-(a-e)]) cube([b+2,g,a-e+1]);
 }
-
 
